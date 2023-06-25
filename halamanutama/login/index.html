@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html>
+<head >
+  <title>Login Laporan PLTM</title>
+  <style>
+
+body {
+  background: url("asset/galaxi.jpeg") no-repeat center center fixed;
+  background-size: cover;
+  font-family: Arial, sans-serif;
+}
+
+
+
+    .container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .left-side {
+      position: relative;
+      flex: 1;
+      height: 100%;
+      overflow: hidden;
+    }
+
+    .slideshow {
+      width: 100%;
+      height: 100%;
+      object-position: left;
+      position: relative; /* Tambahkan posisi relatif pada slideshow container */
+    }
+
+    .slideshow img {
+      width: 90%;
+      height: 90%;
+      object-fit: cover;
+      transition: opacity 0.3s ease;
+      position: absolute; /* Tambahkan posisi absolut pada setiap gambar slide */
+      top: 5%;
+      left: 5%;
+      border-radius: 40px;
+    }
+
+    .slide-buttons {
+      position: absolute;
+      top: 50%;
+      left: 50px;
+      transform: translateY(-100%);
+    }
+
+    .slide-buttons button {
+      background: none;
+      border: none;
+      color: #fff;
+      font-size: 24px;
+      margin-bottom: 10px;
+      cursor: pointer;
+    }
+
+    .right-side {
+      flex: 1;
+      padding: 5px;
+      background-color: rgba(255, 255, 255, 0.452);
+      border-radius: 8px;
+      top: 50%;
+      left: 50px;
+      width: 10px; /* Atur lebar elemen */
+      height: auto; /* Biarkan tinggi elemen menyesuaikan kontennya */
+    }
+
+    h2 {
+      text-align: center;
+      color: #333;
+      margin-bottom: 10px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 5px;
+      color: #333;
+      font-size: 14px;
+    }
+
+    input[type="text"],
+    input[type="password"] {
+      width: 90%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      font-size: 14px;
+    }
+
+    input[type="submit"] {
+      width: 100%;
+      padding: 10px;
+      background-color: #4CAF50;
+      border: none;
+      color: #1e2ad4;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 14px;
+    }
+
+    input[type="submit"]:hover {
+      background-color: #45a049;
+    }
+
+    .error-message {
+      color: #f00;
+      margin-top: 8px;
+      font-size: 14px;
+    }
+  </style>
+  <script>
+    var currentSlide = 0;
+    var slides = document.getElementsByClassName("slide");
+    var slideInterval;
+
+    function startSlideShow() {
+      slideInterval = setInterval(nextSlide, 2000);
+    }
+
+    function nextSlide() {
+      slides[currentSlide].style.opacity = 0;
+      currentSlide = (currentSlide + 1) % slides.length;
+      slides[currentSlide].style.opacity = 1;
+    }
+
+    function prevSlide() {
+      slides[currentSlide].style.opacity = 0;
+      currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+      slides[currentSlide].style.opacity = 1;
+    }
+
+    function login() {
+      var username = document.getElementById("username").value;
+      var password = document.getElementById("password").value;
+
+      if ((username === "pmr" && password === "pltm") || (username === "muara" && password === "muara") || (username === "admin" && password === "admin")) {
+        window.location.href = "halamanutama/index.html";
+      } else {
+        var errorMessage = document.getElementById("error-message");
+        errorMessage.textContent = "Invalid username or password contac 081933070663";
+      }
+    }
+  </script>
+<head>
+  <!-- Masukkan gaya CSS Anda di sini -->
+</head>
+<body onload="startSlideShow()">
+  <div class="container">
+    <div class="left-side">
+      <div class="slideshow">
+        <img class="slide" src="asset/turb.jpg" alt="Slide 1">
+        <img class="slide" src="asset/hp.jpg" alt="Slide 2">
+        <img class="slide" src="asset/vew.jpg" alt="Slide 3">
+        <img class="slide" src="asset/spralcas.jpg" alt="Slide 4">
+        <img class="slide" src="asset/atc.jpg" alt="Slide 5">
+      </div>
+    </div>
+    
+    <div class="slide-buttons">
+      <button onclick="prevSlide()">&lt;</button>
+      <button onclick="nextSlide()">&gt;</button>
+    </div>
+  
+    <div class="right-side">
+      <h2>Login</h2>
+      <form>
+        <div>
+          <label for="username">Username:</label>
+          <input type="text" id="username" name="username" required autocomplete="off">
+        </div>
+        <div>
+          <label for="password">Password:</label>
+          <input type="password" id="password" name="password" required>
+        </div>
+        <div>
+          <input type="button" value="Login" onclick="login()" style="font-size: 20px; padding: 15px 15px;">
+        </div>
+        <div class="error-message" id="error-message"></div>
+      </form>
+    </div>
+  </div>
+</body>
+
+</body>
+</html>
